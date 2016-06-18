@@ -45,8 +45,26 @@ module.exports = function () {
         expect(this.responseBody.data.attributes.status).to.equal(status);
     });
     
-    this.Given(/^a valid order$/, function (callback) {
-    // Write code here that turns the phrase above into concrete actions
-        callback(null, 'pending');
+    this.Given(/^a valid order$/, function () {
+        return payload;
+    });
+    
+    this.When(/^I submit it to the API$/, function () {
+        const that = this;
+        
+        return this.doHttpRequest('orders', 'post', payload)
+        .then((response) => {
+            that.newOrderId = response.body.data.attributes.id;
+            that.successMessage = response.statusCode;
+            return response;
+        });
+    });
+    
+    this.Then(/^I receive a success message$/, function () {
+        expect(this.successMessage).to.equal(201);
+    });
+    
+    this.Then(/^the new order id$/, function () {
+        expect(this.newOrderId).not.to.be.undefined;
     });
 }
