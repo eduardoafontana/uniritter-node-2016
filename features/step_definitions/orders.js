@@ -54,7 +54,7 @@ module.exports = function () {
         
         return this.doHttpRequest('orders', 'post', payload)
         .then((response) => {
-            that.newOrderId = response.body.data.attributes.id;
+            that.newOrderId = response.body.data.id;
             that.successMessage = response.statusCode;
             return response;
         });
