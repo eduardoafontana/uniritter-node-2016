@@ -5,7 +5,7 @@ Feature: products
 Scenario: posting product
     Given a valid product
     When I submit it to the API2
-    Then I receive a success message2
+    Then I receive a success message
     And the new product id
 
 Scenario Outline: invalid product

@@ -31,10 +31,6 @@ module.exports = function () {
         });
     });
     
-    this.Then(/^I receive a success message2$/, function () {
-        expect(this.successMessage).to.equal(201);
-    });
-    
     this.Then(/^the new product id$/, function () {
         expect(this.newProductId).not.to.be.undefined;
     });

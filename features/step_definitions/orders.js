@@ -60,10 +60,6 @@ module.exports = function () {
         });
     });
     
-    this.Then(/^I receive a success message$/, function () {
-        expect(this.successMessage).to.equal(201);
-    });
-    
     this.Then(/^the new order id$/, function () {
         expect(this.newOrderId).not.to.be.undefined;
     });

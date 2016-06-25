@@ -33,5 +33,9 @@ module.exports = function () {
     
     this.Then(/^a payload containing the newly created resource$/, function () {
         expect(this.response.body).to.containSubset(this.fixture.request);
-    });    
+    });
+    
+    this.Then(/^I receive a success message$/, function () {
+        expect(this.successMessage).to.equal(201);
+    });
 };
