@@ -38,6 +38,4 @@ module.exports = function () {
     this.Then(/^the new product id$/, function () {
         expect(this.newProductId).not.to.be.undefined;
     });
-    
-    this.a = "teste";
 }
