@@ -1,10 +1,16 @@
 services: mongodb
 language: node_js
 node_js:
-  - "5.11"
+- '5.11'
 addons:
-    code_climate:
-        repo_token: 436cd15b22a7292096a24e2353fc3c844e8a4b40dc16d6815e22c45195fe1ed2
+  code_climate:
+    repo_token: 436cd15b22a7292096a24e2353fc3c844e8a4b40dc16d6815e22c45195fe1ed2
 after_script:
-  - npm install -g codeclimate-test-reporter
-  - codeclimate-test-reporter < coverage/lcov.info
+- npm install -g codeclimate-test-reporter
+- codeclimate-test-reporter < coverage/lcov.info
+deploy:
+  provider: heroku
+  app: uniritter-node-2016-eduardoaf
+  on: production
+  api_key:
+    secure: odsBa7xYuwYjq2M2GMe8r44z4XAAEheAy3kunSKO3y6qtx2FUvUi0wYuC//S5plziGgDLVB/CugyMumigYoXI4epIOvfLqSx6egXe2IexaAZHhaZfTFBOJ0TJ10CUVuAuFiswzHUC8M4t7sTrSUqaaaHH24SYtED8CDklXX4VciTCnYZhrBR6XrP2C+8bDHEi6pOfjk0leDhg5kn5jDZkbcYML7g9cgPD88KHIlt7+YXniG5KTsvyZVqJnz6IeRs70gpRwDBUuvdgUF4yvWfyKQBp0g6FAGFlNqhk/OF8z12lNQpJNp96ja74c0jgCAxT2lJ0V05QdwUmkLZJecPk2zpz2B0tRrKG5i9+ZsbPy5ZBEpIi0Um2zNxMESWT2OwJFvUZjeYF1gNNcQ3uhlACneGHOJXT1Xrg/e4xY8gafYJjyFFms8Ii98yLlklMNC8BmF62Wo+gN/cYAFuGRk+kltATctxd5pJHT2lVeAdDR6p2E9s4fVwiFFErcK+bUH3rY2oLDKS3XQ1WDbsDOlSMvXWvUK9uo2Cv9Im+lEjHxP7BUzroa3XmwzJ+oLFSnem9JxWdp9EU1ZW1t4lpR9bPs4/FsRhiVFskRPDmh/5sJOBoGhm1VE4SSb2Vk0DKAgZ7+aPOqfHByjr9mbdtmS8Nt8EU/rhxFcPbTSCURb3Pt8=
