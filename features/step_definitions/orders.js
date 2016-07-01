@@ -13,8 +13,6 @@ module.exports = function () {
                 }
             }
     };
-    
-    this.payload = payload;
         
     this.Given(/^an existing order with a (.*) status$/, function (status) {
         const that = this;
@@ -48,6 +46,8 @@ module.exports = function () {
     });
     
     this.Given(/^a valid order$/, function () {
+        this.payload = payload;
+        
         return payload;
     });
     

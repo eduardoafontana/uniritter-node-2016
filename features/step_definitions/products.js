@@ -4,21 +4,21 @@ module.exports = function () {
         chai = require('chai'),
         expect = chai.expect;
 
-    const payload = {
-        data: {
-            type: 'products',
-            attributes: {
-                name: 'Produto nome teste',
-                price: 25,
-                brand: 'Produto marca teste',
-                model: 'Produto modelo teste'
-                }
-            }
-    };
-    
-    this.payload = payload;
+    const payload = 
     
     this.Given(/^a valid product/, function () {
+        this.payload = {
+            data: {
+                type: 'products',
+                attributes: {
+                    name: 'Produto nome teste',
+                    price: 25,
+                    brand: 'Produto marca teste',
+                    model: 'Produto modelo teste'
+                    }
+                }
+        };
+        
         return payload;
     });
     
