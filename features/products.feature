@@ -4,7 +4,7 @@ Feature: products
     
 Scenario: posting product
     Given a valid product
-    When I submit it to the API2
+    When I submit it to the API products
     Then I receive a success message
     And the new product id
 

@@ -4,7 +4,7 @@ Feature: orders
     
 Scenario: posting order
     Given a valid order
-    When I submit it to the API
+    When I submit it to the API orders
     Then I receive a success message
     And the new order id
 
@@ -21,7 +21,7 @@ Examples:
 
 Scenario Outline: invalid order
   Given an invalid order that <condition>
-  When I submit it to the API
+  When I submit it to the API orders
   Then I receive an error response
   And a message saying that <notification>
 Examples:

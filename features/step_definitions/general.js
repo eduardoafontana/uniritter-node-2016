@@ -31,6 +31,17 @@ module.exports = function () {
         });
     });
     
+    this.When(/^I submit it to the API (\w+)$/, function (endpoint) {
+        const that = this;
+        
+        return this.doHttpRequest(endpoint, 'post', this.payload)
+        .then((response) => {
+            that.newId = response.body.data.id;
+            that.successMessage = response.statusCode;
+            return response;
+        });
+    });    
+    
     this.Then(/^a payload containing the newly created resource$/, function () {
         expect(this.response.body).to.containSubset(this.fixture.request);
     });
