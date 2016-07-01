@@ -49,4 +49,8 @@ module.exports = function () {
     this.Then(/^I receive a success message$/, function () {
         expect(this.successMessage).to.equal(201);
     });
+    
+        this.Then(/^the new (\w+) id$/, function (endpoint) {
+        expect(this.newId).not.to.be.undefined;
+    });
 };

@@ -21,8 +21,4 @@ module.exports = function () {
         
         return payload;
     });
-    
-    this.Then(/^the new product id$/, function () {
-        expect(this.newId).not.to.be.undefined;
-    });
 }

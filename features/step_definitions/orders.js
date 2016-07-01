@@ -50,8 +50,4 @@ module.exports = function () {
         
         return payload;
     });
-    
-    this.Then(/^the new order id$/, function () {
-        expect(this.newId).not.to.be.undefined;
-    });
 }
