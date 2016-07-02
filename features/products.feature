@@ -10,7 +10,7 @@ Scenario: posting product
 
 Scenario Outline: invalid product
   Given an invalid product that <condition>
-  When I submit it to the API
+  When I submit it to the API products
   Then I receive an error response
   And a message saying that <notification>
 Examples:

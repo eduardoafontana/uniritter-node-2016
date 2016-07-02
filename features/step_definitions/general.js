@@ -39,6 +39,9 @@ module.exports = function () {
             that.newId = response.body.data.id;
             that.successMessage = response.statusCode;
             return response;
+        })
+        .error((response) => {
+            that.errorResponse = response;
         });
     });    
     
