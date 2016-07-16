@@ -12,20 +12,7 @@ module.exports = function () {
                 items: [{ product_id: '598b04ea-8c20-4240-9c2b-1d36350a8d33', quantity: 1}]
             }
         }
-    };                
-
-    this.Given(/^an existing order with a new status$/, function () {
-        const 
-            that = this,
-            payload = {
-            data: {
-                type: 'orders',
-                attributes: {
-                    items: [{ product_id: '598b04ea-8c20-4240-9c2b-1d36350a8d33', quantity: 1}]
-                    }
-                }
-            }
-    });
+    };
         
     this.Given(/^an existing order with a (.*) status$/, function (status) {
         const that = this;
