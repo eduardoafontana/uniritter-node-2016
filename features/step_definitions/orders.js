@@ -10,9 +10,22 @@ module.exports = function () {
             attributes: {
                 status: 'new',
                 items: [{ product_id: '598b04ea-8c20-4240-9c2b-1d36350a8d33', quantity: 1}]
+            }
+        }
+    };                
+
+    this.Given(/^an existing order with a new status$/, function () {
+        const 
+            that = this,
+            payload = {
+            data: {
+                type: 'orders',
+                attributes: {
+                    items: [{ product_id: '598b04ea-8c20-4240-9c2b-1d36350a8d33', quantity: 1}]
+                    }
                 }
             }
-    };
+    });
         
     this.Given(/^an existing order with a (.*) status$/, function (status) {
         const that = this;
@@ -66,5 +79,9 @@ module.exports = function () {
     
     this.Then(/^the new order id$/, function () {
         expect(this.newOrderId).not.to.be.undefined;
+    });
+
+    this.Then(/^wait a few seconds$/, function (callback) {
+        setTimeout(callback, 3000);
     });
 }
