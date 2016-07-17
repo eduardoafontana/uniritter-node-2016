@@ -29,6 +29,6 @@ Examples:
 
 Scenario: order payment
     Given a valid order
-    When I submit it to the API
+    When I submit it to the API orders
     And wait a few seconds
     Then it moves to a paid status

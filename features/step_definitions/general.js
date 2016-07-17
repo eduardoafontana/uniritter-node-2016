@@ -38,6 +38,7 @@ module.exports = function () {
         .then((response) => {
             that.newId = response.body.data.id;
             that.successMessage = response.statusCode;
+            
             return response;
         })
         .error((response) => {
@@ -53,7 +54,7 @@ module.exports = function () {
         expect(this.successMessage).to.equal(201);
     });
     
-        this.Then(/^the new (\w+) id$/, function (endpoint) {
+    this.Then(/^the new (\w+) id$/, function (endpoint) {
         expect(this.newId).not.to.be.undefined;
     });
 };
