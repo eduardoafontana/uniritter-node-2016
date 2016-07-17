@@ -22,23 +22,34 @@ module.exports = function () {
         return payload;
     });
     
-    this.Given(/^an invalid product that (.*)$/, function (condition) {
+    this.Given(/^an invalid product that is missing the name$/, function () {
       
-        if(condition === 'is missing the name')
-            payload.data.attributes.name = null;
-            
-        // if(condition === 'has a negative price')
-        //     payload.data.attributes.price = -1;
+        payload.data.attributes.name = null;      
+        payload.data.attributes.price = 25;
+      
+        //TODO: clonar objeto para nao precisar resetar propriedade.
       
         this.payload = payload;
       
         return payload;
     });
     
-    // this.Then(/^I receive an error response$/, function () {
+    this.Given(/^an invalid product that has a negative price$/, function () {
       
-    //     expect(this.errorResponse).to.equal(404);
-    // });
+        payload.data.attributes.name = 'Produto nome teste';
+        payload.data.attributes.price = -1;
+      
+        //TODO: clonar objeto para nao precisar resetar propriedade.
+      
+        this.payload = payload;
+      
+        return payload;
+    });    
+    
+    this.Then(/^I receive an error response$/, function () {
+      
+        expect(this.errorResponse).to.equal(400);
+    });
     
     // this.Then(/^a message saying that (.*)$/, function (notification) {
     //     expect(this.errorResponse).to.equal(notification);

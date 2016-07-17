@@ -41,7 +41,7 @@ module.exports = function () {
             return response;
         })
         .error((response) => {
-            that.errorResponse = response;
+            that.errorResponse = response.statusCode;
         });
     });    
     
