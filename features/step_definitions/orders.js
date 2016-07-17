@@ -43,26 +43,9 @@ module.exports = function () {
     });
     
     this.Given(/^a valid order$/, function () {
-        return payload;
-    });
-    
-    this.When(/^I submit it to the API$/, function () {
-        const that = this;
+        this.payload = payload;
         
-        return this.doHttpRequest('orders', 'post', payload)
-        .then((response) => {
-            that.newOrderId = response.body.data.id;
-            that.successMessage = response.statusCode;
-            return response;
-        });
-    });
-    
-    this.Then(/^I receive a success message$/, function () {
-        expect(this.successMessage).to.equal(201);
-    });
-    
-    this.Then(/^the new order id$/, function () {
-        expect(this.newOrderId).not.to.be.undefined;
+        return payload;
     });
 
     this.Then(/^wait a few seconds$/, function (callback) {
