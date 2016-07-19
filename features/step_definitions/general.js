@@ -43,6 +43,7 @@ module.exports = function () {
         })
         .error((response) => {
             that.errorResponse = response.statusCode;
+            that.errorMessage = response.body.errors[0].message;
         });
     });    
     

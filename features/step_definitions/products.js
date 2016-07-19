@@ -4,7 +4,7 @@ module.exports = function () {
         chai = require('chai'),
         expect = chai.expect;
 
-    const payload = {
+    const payloadBase = {
             data: {
                 type: 'products',
                 attributes: {
@@ -17,18 +17,31 @@ module.exports = function () {
         };
     
     this.Given(/^a valid product/, function () {
-        this.payload = payload;
+        this.payload = payloadBase;
         
-        return payload;
+        return payloadBase;
     });
     
     this.Given(/^an invalid product that is missing the name$/, function () {
       
-        payload.data.attributes.name = null;      
-        payload.data.attributes.price = 25;
-      
-        //TODO: clonar objeto para nao precisar resetar propriedade.
-      
+        //const payload = _.clone(payloadBase, true);
+        //payload.data.attributes.name = null;  
+        //TODO: _.clone nao clona
+        
+        const payload = {
+            data: {
+                type: 'products',
+                attributes: {
+                    name: 'Produto nome teste',
+                    price: 25,
+                    brand: 'Produto marca teste',
+                    model: 'Produto modelo teste'
+                }
+            }
+        };
+        
+        payload.data.attributes.name = null;
+        
         this.payload = payload;
       
         return payload;
@@ -36,10 +49,23 @@ module.exports = function () {
     
     this.Given(/^an invalid product that has a negative price$/, function () {
       
-        payload.data.attributes.name = 'Produto nome teste';
-        payload.data.attributes.price = -1;
+        //const payload = _.clone(payloadBase, true);
+        //payload.data.attributes.price = -1;
+        //TODO: _.clone nao clona
       
-        //TODO: clonar objeto para nao precisar resetar propriedade.
+        const payload = {
+            data: {
+                type: 'products',
+                attributes: {
+                    name: 'Produto nome teste',
+                    price: 25,
+                    brand: 'Produto marca teste',
+                    model: 'Produto modelo teste'
+                }
+            }
+        };
+        
+        payload.data.attributes.price = -1;
       
         this.payload = payload;
       
@@ -51,7 +77,7 @@ module.exports = function () {
         expect(this.errorResponse).to.equal(400);
     });
     
-    // this.Then(/^a message saying that (.*)$/, function (notification) {
-    //     expect(this.errorResponse).to.equal(notification);
-    // });    
+    this.Then(/^a message saying that (.*)$/, function (notification) {
+        expect(this.errorMessage).to.equal(notification);
+    });    
 }
