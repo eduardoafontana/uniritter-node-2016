@@ -61,5 +61,37 @@ module.exports = function () {
             expect(body.data.attributes.status).to.equal('paid');
             return response;
         });
-    });    
+    });
+    
+   this.Given(/^an invalid order that is missing an item quantity$/, function () {
+
+        const payload = {
+            data: {
+                type: 'orders',
+                attributes: {
+                    items: [{ product_id: '598b04ea-8c20-4240-9c2b-1d36350a8d33'}]
+                }
+            }
+        };
+      
+        this.payload = payload;
+      
+        return payload;
+   });
+   
+   this.Given(/^an invalid order that has an invalid format in product_id$/, function () {
+
+        const payload = {
+            data: {
+                type: 'orders',
+                attributes: {
+                    items: [{ product_id: '598b04ea-8c20-4240-9c2b', quantity: 1}]
+                }
+            }
+        };
+      
+        this.payload = payload;
+      
+        return payload;
+   });    
 }

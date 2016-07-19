@@ -24,8 +24,8 @@ Scenario Outline: invalid order
   And a message saying that <notification>
 Examples:
   |         condition                   |   notification                |
-  | is missing an item quantity         | item.quantity is mandatory    |
-  | has an invalid format in product_id | product_id must be a uuid     |
+  | is missing an item quantity         | child "data" fails because [child "attributes" fails because [child "items" fails because ["items" at position 0 fails because [child "quantity" fails because ["quantity" is required]]]]]    |
+  | has an invalid format in product_id | child "data" fails because [child "attributes" fails because [child "items" fails because ["items" at position 0 fails because [child "product_id" fails because ["product_id" must be a valid GUID]]]]]     |
 
 Scenario: order payment
     Given a valid order
